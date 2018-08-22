@@ -6,6 +6,7 @@ import java.math.BigInteger;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
@@ -13,6 +14,7 @@ import java.util.concurrent.TimeUnit;
 import cn.hutool.core.convert.impl.CollectionConverter;
 import cn.hutool.core.convert.impl.GenericEnumConverter;
 import cn.hutool.core.lang.Assert;
+import cn.hutool.core.text.UnicodeUtil;
 import cn.hutool.core.util.CharsetUtil;
 import cn.hutool.core.util.ClassUtil;
 import cn.hutool.core.util.HexUtil;
@@ -421,7 +423,7 @@ public class Convert {
 
 	/**
 	 * 转换为BigDecimal<br>
-	 * 如果给定的值为空，或者转换失败，返回默认值<br>
+	 * 如果给定的值为空，或者转换失败，返回null<br>
 	 * 转换失败不会报错
 	 * 
 	 * @param value 被转换的值
@@ -429,6 +431,33 @@ public class Convert {
 	 */
 	public static BigDecimal toBigDecimal(Object value) {
 		return toBigDecimal(value, null);
+	}
+	
+	/**
+	 * 转换为Date<br>
+	 * 如果给定的值为空，或者转换失败，返回默认值<br>
+	 * 转换失败不会报错
+	 * 
+	 * @param value 被转换的值
+	 * @param defaultValue 转换错误时的默认值
+	 * @return 结果
+	 * @since 4.1.6
+	 */
+	public static Date toDate(Object value, Date defaultValue) {
+		return convert(Date.class, value, defaultValue);
+	}
+	
+	/**
+	 * 转换为Date<br>
+	 * 如果给定的值为空，或者转换失败，返回<code>null</code><br>
+	 * 转换失败不会报错
+	 * 
+	 * @param value 被转换的值
+	 * @return 结果
+	 * @since 4.1.6
+	 */
+	public static Date toDate(Object value) {
+		return toDate(value, null);
 	}
 
 	/**
@@ -703,17 +732,10 @@ public class Convert {
 	 * 
 	 * @param unicode Unicode符
 	 * @return String 字符串
+	 * @see UnicodeUtil#toString(String)
 	 */
 	public static String unicodeToStr(String unicode) {
-		StringBuffer string = new StringBuffer();
-		String[] hex = StrUtil.split(unicode, "\\u");
-		for (int i = 1; i < hex.length; i++) {
-			// 转换出每一个代码点
-			int data = Integer.parseInt(hex[i], 16);
-			// 追加成string
-			string.append((char) data);
-		}
-		return string.toString();
+		return UnicodeUtil.toString(unicode);
 	}
 
 	/**

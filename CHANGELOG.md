@@ -3,6 +3,73 @@
 
 -------------------------------------------------------------------------------------------------------------
 
+## 4.1.8
+
+### 新特性
+* 【http】          HttpRequest增加getUrl、getMethod等方法
+* 【core】         Validator增加isWord和ValidateWord（感谢@【帝都】宁静）
+* 【core】         增加CollUtil.filter针对List的重载（issue#IM1NI@Gitee）
+* 【core】         增加ImageUtil.toBase64
+* 【http】          增加SoapRequest
+* 【poi】           ExcelWriter增加renameSheet方法（issue#150@Github）
+* 【core】         ZipUtil增加unzipFileBytes方法（issue#IM5KO@Gitee）
+* 【aop】          加入Cglib实现的切面支持（issue#IM4Y2@Gitee）
+* 【extra】         加入FTP客户端支持，基于commons-net封装
+
+### Bug修复
+* 【http】          修复编码自动识别的bug（issue#IM33O@Gitee）
+* 【db】            修复Session中ds引起的空指针问题（感谢@【武汉】jellard）
+* 【core】         修复ReflectUtil.newInstance二次调用资源问题（issue#IM51X@Gitee）
+* 【core】         修复ClassScaner包名前缀引起的问题（issue#IM5OJ@Gitee）
+
+-------------------------------------------------------------------------------------------------------------
+
+## 4.1.7
+
+### 新特性
+* 【db】            SqlRunner被弃用
+
+### Bug修复
+* 【db】            修复Oracle分页问题（issue#ILZDA@Gitee）
+* 【db】            Dialect使用单例
+
+-------------------------------------------------------------------------------------------------------------
+
+## 4.1.6
+
+### 新特性
+* 【core】         OptNullBasicTypeGetter增加getDate方法（issue#ILUQM@Gitee）
+* 【core】         RuntimeUtil增加可选环境变量参数（issue#ILV2I@Gitee）
+* 【core】         修改Caller结构
+
+### Bug修复
+* 【db】            修复Oracle分页多一条问题（issue#ILUQM@Gitee）
+* 【poi】           修复ExcelWriter换行问题（issue#ILXLI@Gitee）
+
+-------------------------------------------------------------------------------------------------------------
+
+## 4.1.5
+
+### 新特性
+* 【poi】           ExcelWriter支持通过别名方式设置Bean写出的顺序（感谢@【武汉】zzz）
+* 【db】            SQL日志打印扩展到所有SQL（感谢@【河北】理想主义）
+* 【core】         增加FileUtil.copyFilesFromDir方法（issue#ILRLG@Gitee）
+* 【core】         EscapeUtil.unescapeHtml4和EscapeUtil.escapeHtml4（issue#112@Github）
+* 【http】          增加CustomProtocolsSSLFactory和AndroidSupportSSLFactory（pr#142@Github）
+* 【setting】      添加SettingUtil（感谢@【杭州】t-io）
+* 【bloomFilter】添加BloomFilterUtil
+* 【core】          添加Img类
+
+### Bug修复
+* 【http】          修复body方法判断Content-Type失效问题（感谢@【上海】皮皮今）
+* 【core】         修复FileUtil.copy方法在目标不存在的情况下报错问题
+* 【core】         修复ClassScaner在Spring boot fat jar下扫描失败的问题（issue#IKDJW@Gitee）
+* 【json】          修复JSONObject构造names列表为空导致的构造空对象（issue#143@Github ）
+* 【core】         修复ImageUtil.pressText图片有黑边的问题（issue#141@Github）
+
+
+-------------------------------------------------------------------------------------------------------------
+
 ## 4.1.4
 
 ### 新特性
